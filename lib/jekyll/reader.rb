@@ -44,7 +44,7 @@ module Jekyll
       dot_pages = []
       dot_static_files = []
 
-      dot = Dir.chdir(base) { filter_entries(Dir.entries("."), base) }
+      dot = Dir.chdir(base) { filter_entries(Dir.entries(".", encoding: site.config["encoding"]), base) }
       dot.each do |entry|
         file_path = @site.in_source_dir(base, entry)
         if File.directory?(file_path)
